@@ -1,18 +1,18 @@
 package br.com.ecommerce.ecommerceapi.service;
 
-import br.com.ecommerce.ecommerceapi.model.Cliente;
+import br.com.ecommerce.ecommerceapi.dto.ClienteDTO;
 
 import java.util.List;
 
 public interface ClienteService {
 
-    List<Cliente> findAll();
+    List<ClienteDTO> findAll();
 
-    Cliente findById(Integer id);
+    ClienteDTO findById(Integer id);
 
-    Cliente save(Cliente cliente);
+    ClienteDTO save(ClienteDTO clienteDTO);
 
-    Cliente update(Integer id, Cliente cliente);
+    ClienteDTO update(Integer id, ClienteDTO clienteDTO);
 
     void delete(Integer id);
 }

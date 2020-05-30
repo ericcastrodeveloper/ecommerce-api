@@ -1,11 +1,11 @@
 package br.com.ecommerce.ecommerceapi.model;
 
+import br.com.ecommerce.ecommerceapi.dto.ItemPedidoDTO;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -17,7 +17,16 @@ public class ItemPedido implements Serializable {
     @Column(name = "id_item_pedido")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @OneToOne
+    @JoinColumn(name = "id_produto")
+    private Produto produto;
     private Integer quantidade;
-    private BigDecimal valor;
 
+    public ItemPedido() {
+    }
+
+    public ItemPedido(ItemPedidoDTO itemPedidoDTO) {
+        this.produto = new Produto(itemPedidoDTO.getProdutoId());
+        this.quantidade = itemPedidoDTO.getQuantidade();
+    }
 }

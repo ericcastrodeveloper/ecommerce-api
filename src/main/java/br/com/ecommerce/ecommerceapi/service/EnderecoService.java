@@ -1,18 +1,18 @@
 package br.com.ecommerce.ecommerceapi.service;
 
-import br.com.ecommerce.ecommerceapi.model.Endereco;
+import br.com.ecommerce.ecommerceapi.dto.EnderecoDTO;
 
 import java.util.List;
 
 public interface EnderecoService {
     
-    List<Endereco> findAll();
+    List<EnderecoDTO> findAll();
 
-    Endereco findById(Integer id);
+    EnderecoDTO findById(Integer id);
 
-    Endereco save(Endereco endereco);
+    EnderecoDTO save(EnderecoDTO enderecoDTO);
 
-    Endereco update(Integer id, Endereco endereco);
+    EnderecoDTO update(Integer id, EnderecoDTO enderecoDTO);
 
     void delete(Integer id);
 }

@@ -1,6 +1,6 @@
 package br.com.ecommerce.ecommerceapi.controller;
 
-import br.com.ecommerce.ecommerceapi.model.Status;
+import br.com.ecommerce.ecommerceapi.dto.StatusDTO;
 import br.com.ecommerce.ecommerceapi.service.StatusService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,23 +17,23 @@ public class StatusController {
     }
 
     @GetMapping
-    public List<Status> findAll(){
+    public List<StatusDTO> findAll(){
         return statusService.findAll();
     }
 
     @GetMapping("[id]")
-    public Status findById(@RequestParam Integer id){
+    public StatusDTO findById(@RequestParam Integer id){
         return statusService.findById(id);
     }
 
     @PostMapping
-    public Status save(@RequestBody Status Status){
-        return statusService.save(Status);
+    public StatusDTO save(@RequestBody StatusDTO statusDTO){
+        return statusService.save(statusDTO);
     }
 
     @PutMapping({"id"})
-    public Status update(@RequestParam Integer id, @RequestBody Status Status){
-        return statusService.update(id, Status);
+    public StatusDTO update(@RequestParam Integer id, @RequestBody StatusDTO statusDTO){
+        return statusService.update(id, statusDTO);
     }
 
     @DeleteMapping({"id"})

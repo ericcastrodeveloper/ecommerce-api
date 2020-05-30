@@ -1,18 +1,18 @@
 package br.com.ecommerce.ecommerceapi.service;
 
-import br.com.ecommerce.ecommerceapi.model.Produto;
+import br.com.ecommerce.ecommerceapi.dto.ProdutoDTO;
 
 import java.util.List;
 
 public interface ProdutoService {
     
-    List<Produto> findAll();
+    List<ProdutoDTO> findAll();
 
-    Produto findById(Integer id);
+    ProdutoDTO findById(Integer id);
 
-    Produto save(Produto produto);
+    ProdutoDTO save(ProdutoDTO produtoDTO);
 
-    Produto update(Integer id, Produto produto);
+    ProdutoDTO update(Integer id, ProdutoDTO produtoDTO);
 
     void delete(Integer id);
 }

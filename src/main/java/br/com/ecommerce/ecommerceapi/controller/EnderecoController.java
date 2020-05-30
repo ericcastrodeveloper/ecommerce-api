@@ -1,6 +1,6 @@
 package br.com.ecommerce.ecommerceapi.controller;
 
-import br.com.ecommerce.ecommerceapi.model.Endereco;
+import br.com.ecommerce.ecommerceapi.dto.EnderecoDTO;
 import br.com.ecommerce.ecommerceapi.service.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,23 +15,23 @@ public class EnderecoController {
     private EnderecoService enderecoService;
 
     @GetMapping
-    public List<Endereco> findAll(){
+    public List<EnderecoDTO> findAll(){
         return enderecoService.findAll();
     }
 
     @GetMapping("{id}")
-    public Endereco findById(@RequestParam Integer id){
+    public EnderecoDTO findById(@RequestParam Integer id){
         return enderecoService.findById(id);
     }
 
     @PostMapping
-    public Endereco save(@RequestBody Endereco endereco){
-        return enderecoService.save(endereco);
+    public EnderecoDTO save(@RequestBody EnderecoDTO enderecoDTO){
+        return enderecoService.save(enderecoDTO);
     }
 
     @PutMapping({"id"})
-    public Endereco update(@RequestParam Integer id, @RequestBody Endereco endereco){
-        return enderecoService.update(id, endereco);
+    public EnderecoDTO update(@RequestParam Integer id, @RequestBody EnderecoDTO enderecoDTO){
+        return enderecoService.update(id, enderecoDTO);
     }
 
     @DeleteMapping({"id"})

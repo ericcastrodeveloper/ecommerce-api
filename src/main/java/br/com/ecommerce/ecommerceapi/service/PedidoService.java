@@ -1,18 +1,19 @@
 package br.com.ecommerce.ecommerceapi.service;
 
-import br.com.ecommerce.ecommerceapi.model.Pedido;
+import br.com.ecommerce.ecommerceapi.dto.PedidoDTO;
+import br.com.ecommerce.ecommerceapi.exception.InsufficientStockException;
 
 import java.util.List;
 
 public interface PedidoService {
     
-    List<Pedido> findAll();
+    List<PedidoDTO> findAll();
 
-    Pedido findById(Integer id);
+    PedidoDTO findById(Integer id);
 
-    Pedido save(Pedido pedido);
+    PedidoDTO save(PedidoDTO pedidoDTO) throws InsufficientStockException;
 
-    Pedido update(Integer id, Pedido pedido);
+    PedidoDTO update(Integer id, PedidoDTO pedidoDTO) throws InsufficientStockException;
 
     void delete(Integer id);
 }

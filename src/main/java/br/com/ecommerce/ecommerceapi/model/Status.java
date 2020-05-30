@@ -1,5 +1,6 @@
 package br.com.ecommerce.ecommerceapi.model;
 
+import br.com.ecommerce.ecommerceapi.dto.StatusDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,4 +19,14 @@ public class Status implements Serializable {
     private Integer id;
     private String descricao;
 
+    public Status() {
+    }
+
+    public Status(StatusDTO statusDTO) {
+        this.descricao = statusDTO.getDescricao();
+    }
+
+    public Status(Integer id) {
+        this.id = id;
+    }
 }

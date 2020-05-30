@@ -1,11 +1,13 @@
 package br.com.ecommerce.ecommerceapi.service.impl;
 
+import br.com.ecommerce.ecommerceapi.dto.StatusDTO;
 import br.com.ecommerce.ecommerceapi.model.Status;
 import br.com.ecommerce.ecommerceapi.repository.StatusRepository;
 import br.com.ecommerce.ecommerceapi.service.StatusService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StatusServiceImpl implements StatusService {
@@ -17,23 +19,28 @@ public class StatusServiceImpl implements StatusService {
     }
 
     @Override
-    public List<Status> findAll() {
-        return statusRepository.findAll();
+    public List<StatusDTO> findAll() {
+        return statusRepository.findAll().stream().map(StatusDTO::new).collect(Collectors.toList());
     }
 
     @Override
-    public Status findById(Integer id) {
-        return statusRepository.findById(id).get();
+    public StatusDTO findById(Integer id) {
+        Status status = statusRepository.findById(id).get();
+        return new StatusDTO(status);
     }
 
     @Override
-    public Status save(Status status) {
-        return statusRepository.save(status);
+    public StatusDTO save(StatusDTO statusDTO) {
+        Status status = statusRepository.save(new Status(statusDTO));
+        return new StatusDTO(status);
     }
 
     @Override
-    public Status update(Integer id, Status status) {
-        return statusRepository.save(status);
+    public StatusDTO update(Integer id, StatusDTO statusDTO) {
+        Status status = statusRepository.findById(id).get();
+        status.setDescricao(statusDTO.getDescricao());
+        Status statusUpdated = statusRepository.save(status);
+        return new StatusDTO(statusUpdated);
     }
 
     @Override

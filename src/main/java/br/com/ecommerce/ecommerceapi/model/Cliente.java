@@ -1,10 +1,12 @@
 package br.com.ecommerce.ecommerceapi.model;
 
+import br.com.ecommerce.ecommerceapi.dto.ClienteDTO;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -24,8 +26,20 @@ public class Cliente implements Serializable {
     @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
     private List<Endereco> enderecoList;
-//    @OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
-////    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", updatable = false, insertable = false)
-//    private List<Pedido> pedidoList;
 
+    public Cliente() {
+    }
+
+    public Cliente(ClienteDTO clienteDTO) {
+        this.nome = clienteDTO.getNome();
+        this.cpf = clienteDTO.getCpf();
+        this.email = clienteDTO.getEmail();
+        this.telefone = clienteDTO.getTelefone();
+        enderecoList = new ArrayList<>();
+        clienteDTO.getEnderecoList().forEach(enderecoDTO -> enderecoList.add(new Endereco(enderecoDTO)));
+    }
+
+    public Cliente(Integer id) {
+        this.id = id;
+    }
 }

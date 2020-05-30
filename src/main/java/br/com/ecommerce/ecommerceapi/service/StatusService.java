@@ -1,18 +1,18 @@
 package br.com.ecommerce.ecommerceapi.service;
 
-import br.com.ecommerce.ecommerceapi.model.Status;
+import br.com.ecommerce.ecommerceapi.dto.StatusDTO;
 
 import java.util.List;
 
 public interface StatusService {
     
-    List<Status> findAll();
+    List<StatusDTO> findAll();
 
-    Status findById(Integer id);
+    StatusDTO findById(Integer id);
 
-    Status save(Status status);
+    StatusDTO save(StatusDTO status);
 
-    Status update(Integer id, Status status);
+    StatusDTO update(Integer id, StatusDTO status);
 
     void delete(Integer id);
 }

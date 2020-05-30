@@ -1,6 +1,6 @@
 package br.com.ecommerce.ecommerceapi.controller;
 
-import br.com.ecommerce.ecommerceapi.model.Produto;
+import br.com.ecommerce.ecommerceapi.dto.ProdutoDTO;
 import br.com.ecommerce.ecommerceapi.service.ProdutoService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,23 +17,23 @@ public class ProdutoController {
     }
 
     @GetMapping
-    public List<Produto> findAll(){
+    public List<ProdutoDTO> findAll(){
         return produtoService.findAll();
     }
 
     @GetMapping("{id}")
-    public Produto findById(@RequestParam Integer id){
+    public ProdutoDTO findById(@RequestParam Integer id){
         return produtoService.findById(id);
     }
 
     @PostMapping
-    public Produto save(@RequestBody Produto Produto){
-        return produtoService.save(Produto);
+    public ProdutoDTO save(@RequestBody ProdutoDTO produtoDTO){
+        return produtoService.save(produtoDTO);
     }
 
     @PutMapping({"id"})
-    public Produto update(@RequestParam Integer id, @RequestBody Produto Produto){
-        return produtoService.update(id, Produto);
+    public ProdutoDTO update(@RequestParam Integer id, @RequestBody ProdutoDTO produtoDTO){
+        return produtoService.update(id, produtoDTO);
     }
 
     @DeleteMapping({"id"})

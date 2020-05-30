@@ -1,6 +1,6 @@
 package br.com.ecommerce.ecommerceapi.controller;
 
-import br.com.ecommerce.ecommerceapi.model.Cliente;
+import br.com.ecommerce.ecommerceapi.dto.ClienteDTO;
 import br.com.ecommerce.ecommerceapi.service.ClienteService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,23 +17,23 @@ public class ClienteController {
     }
 
     @GetMapping
-    public List<Cliente> findAll(){
+    public List<ClienteDTO> findAll(){
         return clienteService.findAll();
     }
 
     @GetMapping("{id}")
-    public Cliente findById(@RequestParam  Integer id){
+    public ClienteDTO findById(@RequestParam  Integer id){
         return clienteService.findById(id);
     }
 
     @PostMapping
-    public Cliente save(@RequestBody Cliente cliente){
-        return clienteService.save(cliente);
+    public ClienteDTO save(@RequestBody ClienteDTO clienteDTO){
+        return clienteService.save(clienteDTO);
     }
 
     @PutMapping({"id"})
-    public Cliente update(@RequestParam Integer id, @RequestBody Cliente cliente){
-        return clienteService.update(id, cliente);
+    public ClienteDTO update(@RequestParam Integer id, @RequestBody ClienteDTO clienteDTO){
+        return clienteService.update(id, clienteDTO);
     }
 
     @DeleteMapping({"id"})

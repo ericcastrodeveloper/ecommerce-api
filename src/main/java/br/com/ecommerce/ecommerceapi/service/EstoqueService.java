@@ -1,18 +1,18 @@
 package br.com.ecommerce.ecommerceapi.service;
 
-import br.com.ecommerce.ecommerceapi.model.Estoque;
+import br.com.ecommerce.ecommerceapi.dto.EstoqueDTO;
 
 import java.util.List;
 
 public interface EstoqueService {
     
-    List<Estoque> findAll();
+    List<EstoqueDTO> findAll();
 
-    Estoque findById(Integer id);
+    EstoqueDTO findById(Integer id);
 
-    Estoque save(Estoque estoque);
+    EstoqueDTO save(EstoqueDTO estoqueDTO);
 
-    Estoque update(Integer id, Estoque estoque);
+    EstoqueDTO update(Integer id, EstoqueDTO estoqueDTO);
 
     void delete(Integer id);
 }

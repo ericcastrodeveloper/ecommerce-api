@@ -1,6 +1,7 @@
 package br.com.ecommerce.ecommerceapi.controller;
 
-import br.com.ecommerce.ecommerceapi.model.Pedido;
+import br.com.ecommerce.ecommerceapi.dto.PedidoDTO;
+import br.com.ecommerce.ecommerceapi.exception.InsufficientStockException;
 import br.com.ecommerce.ecommerceapi.service.PedidoService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,23 +18,23 @@ public class PedidoController {
     }
 
     @GetMapping
-    public List<Pedido> findAll(){
+    public List<PedidoDTO> findAll(){
         return pedidoService.findAll();
     }
 
     @GetMapping("{id}")
-    public Pedido findById(@RequestParam Integer id){
+    public PedidoDTO findById(@RequestParam Integer id){
         return pedidoService.findById(id);
     }
 
     @PostMapping
-    public Pedido save(@RequestBody Pedido pedido){
-        return pedidoService.save(pedido);
+    public PedidoDTO save(@RequestBody PedidoDTO pedidoDTO) throws InsufficientStockException {
+        return pedidoService.save(pedidoDTO);
     }
 
     @PutMapping({"id"})
-    public Pedido update(@RequestParam Integer id, @RequestBody Pedido pedido){
-        return pedidoService.update(id, pedido);
+    public PedidoDTO update(@RequestParam Integer id, @RequestBody PedidoDTO pedidoDTO) throws InsufficientStockException {
+        return pedidoService.update(id, pedidoDTO);
     }
 
     @DeleteMapping({"id"})

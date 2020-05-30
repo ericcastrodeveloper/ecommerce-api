@@ -1,6 +1,6 @@
 package br.com.ecommerce.ecommerceapi.controller;
 
-import br.com.ecommerce.ecommerceapi.model.Estoque;
+import br.com.ecommerce.ecommerceapi.dto.EstoqueDTO;
 import br.com.ecommerce.ecommerceapi.service.EstoqueService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,23 +17,23 @@ public class EstoqueController {
     }
 
     @GetMapping
-    public List<Estoque> findAll(){
+    public List<EstoqueDTO> findAll(){
         return estoqueService.findAll();
     }
 
     @GetMapping("{id}")
-    public Estoque findById(@RequestParam Integer id){
+    public EstoqueDTO findById(@RequestParam Integer id){
         return estoqueService.findById(id);
     }
 
     @PostMapping
-    public Estoque save(@RequestBody Estoque estoque){
-        return estoqueService.save(estoque);
+    public EstoqueDTO save(@RequestBody EstoqueDTO estoqueDTO){
+        return estoqueService.save(estoqueDTO);
     }
 
     @PutMapping({"id"})
-    public Estoque update(@RequestParam Integer id, @RequestBody Estoque estoque){
-        return estoqueService.update(id, estoque);
+    public EstoqueDTO update(@RequestParam Integer id, @RequestBody EstoqueDTO estoqueDTO){
+        return estoqueService.update(id, estoqueDTO);
     }
 
     @DeleteMapping({"id"})
